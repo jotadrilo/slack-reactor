@@ -1,0 +1,19 @@
+{
+  "name": "slack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@slack/client": "^3.14.0",
+    "handlebars": "^4.0.10",
+    "js-yaml": "^3.10.0",
+    "lodash": "^4.17.4",
+    "slack-api": "^0.1.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "author": "",
+  "license": "MIT"
+}

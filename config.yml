@@ -1,0 +1,10 @@
+sample:
+  pattern: 'test passed'
+  emojis:
+    - '+1'
+  notifications:
+    - user: '@jhon'
+      info: 'Just reacted with :{{emoji}}: in <{{permalink}}|#{{channel.name}}>!'
+      alert: 'Unable to react with :{{emoji}}:!'
+    - user: '@jane'
+      info: 'Just reacted with :{{emoji}}: in <{{permalink}}|#{{channel.name}}>!'
