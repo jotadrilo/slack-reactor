@@ -51,7 +51,7 @@ sample:
   emojis:
     - '+1'
   notifications:
-    - user: '@jhon'
+    - user: '@john'
       info: 'Just reacted with :{{emoji}}: in <{{permalink}}|#{{channel.name}}>!'
       alert: 'Unable to react with :{{emoji}}:!'
     - user: '@jane'
@@ -115,7 +115,7 @@ functions:
               emojis:
                 - '+1'
               notifications:
-                - user: '@jhon'
+                - user: '@john'
                   info: 'Just reacted with :{{emoji}}: in <{{permalink}}|#{{channel.name}}>!'
                   alert: 'Unable to react with :{{emoji}}:!'
                 - user: '@jane'
