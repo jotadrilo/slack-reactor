@@ -8,7 +8,7 @@ services:
       - ~/.aws:/root/.aws
     environment:
       CONFIG_FILE: /app/config.yml
-      SLACK_API_TOKEN: <slack-api-token-here>
+      SLACK_API_TOKEN: '<slack-api-token-here>'
     tty: true
 
   react:

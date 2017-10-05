@@ -2,7 +2,7 @@
 
 const yaml = require('js-yaml');
 const fs = require('fs');
-const handler = require('./lambda/handler');
+const sr = require('./lib/slack-reactor');
 
 // Parse input
 const configFile = process.argv[2] || '';
@@ -20,4 +20,4 @@ try {
   throw(e);
 }
 
-handler.react(config);
+sr.react(config);
