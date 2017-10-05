@@ -95,3 +95,37 @@ docker-compose run \
   -e "SLACK_API_TOKEN=<slack-api-token-here>" \
   deploy
 ```
+
+### Serverless file
+
+The important details in the `lambda/serverless.yml` file are:
+
+```yaml
+...
+
+functions:
+  react:
+    ...
+    events:
+      - schedule:
+          rate: cron(0 16 ? * MON-FRI *)
+          input:
+            sample:
+              pattern: 'test passed'
+              emojis:
+                - '+1'
+              notifications:
+                - user: '@jhon'
+                  info: 'Just reacted with :{{emoji}}: in <{{permalink}}|#{{channel.name}}>!'
+                  alert: 'Unable to react with :{{emoji}}:!'
+                - user: '@jane'
+                  info: 'Just reacted with :{{emoji}}: in <{{permalink}}|#{{channel.name}}>!'
+    environment:
+      SLACK_API_TOKEN: '<slack-api-token-here>'
+```
+
+Where:
+
+- `rate`: Cron expression to run the function
+- `input`: Configuration YAML data (`config.yml`)
+- `environment:`: `SLACK_API_TOKEN` should follow the `xoxp-*` pattern.
