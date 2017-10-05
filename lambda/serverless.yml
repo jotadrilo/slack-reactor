@@ -1,0 +1,35 @@
+service: slack-reactor
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+functions:
+  react:
+    handler: handler.react
+    description: Serverless Slack reactor Lambda function 
+    timeout: 60
+    memorySize: 128
+    events:
+      - schedule:
+          rate: cron(15 16 ? * MON-FRI *)
+          input:
+            molletor:
+              pattern: 'Reminder: React with :mollete: if you want one for tomorrow. Please, answer before 6PM.'
+              emojis:
+                - 'mollete'
+                - 'hug'
+              notifications:
+                - user: '@jdrios'
+                  info: 'Just reacted with :{{emoji}}: in <{{permalink}}|#{{channel.name}}>!'
+                  alert: 'Unable to react with :{{emoji}}:!'
+            codedx:
+              pattern: 'tammy.hasenzahl@codedx.com'
+              emojis:
+                - 'party-parrot'
+              notifications:
+                - user: '@jdrios'
+                  info: 'Just reacted with :{{emoji}}: in <{{permalink}}|#{{channel.name}}>!'
+                  alert: 'Unable to react with :{{emoji}}:!'
+    environment:
+      SLACK_API_TOKEN: 'xoxp-2919761782-11036759639-251525401908-61bd4477b1ee9e31dda3414b1911c494'

@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+  common:
+    build: .
+    volumes:
+      - .:/app
+      - ~/.aws:/root/.aws
+    environment:
+      CONFIG_FILE: /app/config.yml
+      SLACK_API_TOKEN: <slack-api-token-here>
+    tty: true
+
+  react:
+    extends:
+      service: common
+    command:
+      - /app/docker/slack-reactor.sh
+
+  test:
+    extends:
+      service: common
+    entrypoint: /app/docker/test.sh
+
+  deploy-stack:
+    extends:
+      service: common
+    entrypoint: /app/docker/serverless.sh
+    command: deploy
+
+  deploy-function:
+    extends:
+      service: common
+    entrypoint: /app/docker/serverless.sh
+    command: deploy --function react
