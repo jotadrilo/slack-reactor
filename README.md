@@ -16,13 +16,13 @@ Once you get it, you should replace the `<slack-api-token-here>` placeholder in 
  - `docker-compose.yml`
  - `lambda/serverless.yml`
 
-Also, some commands in this documentation will refer to this placeholder instead of the real token, that should follow the `xoxp-*` pattern.
+Also, some commands in this documentation will refer to this placeholder instead of the real token, wich should follow the `xoxp-*` pattern.
 
-## How to run
+## Local Run
 
-You can either run in Docker or in local
+You can run this tool either in a container or in your host machine.
 
-### Local run
+### Host
 
 You need to specify a configuration file and run:
 
@@ -30,7 +30,7 @@ You need to specify a configuration file and run:
 node index.js config.yml
 ```
 
-## Docker Compose run
+### Container
 
 You need to specify a configuration file in the `docker-compose.yml` environment section and run:
 
@@ -69,7 +69,7 @@ sample:
  - `notifications.info`: Information message to notify with. It accepts handlebars, using the Slack Web API response as data
  - `notifications.alert`: Alert message to notify errors with. It also accepts handlebars.
 
-## Lambada
+## Lambda
 
 This tool also supports Lambda. You need to have an AWS account already created and a `~/.aws/credentials` file populated.
 In order to easy the Lambda function creation, we will use Serverless.
