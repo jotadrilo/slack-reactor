@@ -12,7 +12,7 @@ functions:
     memorySize: 128
     events:
       - schedule:
-          rate: cron(0 16 ? * MON-FRI *)
+          rate: cron(0 15 ? * MON-FRI *)
           input:
             sample:
               pattern: 'test passed'
