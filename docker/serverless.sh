@@ -4,5 +4,4 @@
 npm install
 
 # Run serverless
-cd lambda
 serverless "$@"
