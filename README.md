@@ -109,23 +109,13 @@ functions:
     events:
       - schedule:
           rate: cron(0 16 ? * MON-FRI *)
-          input:
-            sample:
-              pattern: 'test passed'
-              emojis:
-                - '+1'
-              notifications:
-                - user: '@john'
-                  info: 'Just reacted with :{{emoji}}: in <{{permalink}}|#{{channel.name}}>!'
-                  alert: 'Unable to react with :{{emoji}}:!'
-                - user: '@jane'
-                  info: 'Just reacted with :{{emoji}}: in <{{permalink}}|#{{channel.name}}>!'
+          input: ${file(${env:CONFIG_FILE})}
     environment:
-      SLACK_API_TOKEN: '<slack-api-token-here>'
+      SLACK_API_TOKEN: ${env:SLACK_API_TOKEN}
 ```
 
 Where:
 
 - `rate`: Cron expression to run the function
-- `input`: Configuration YAML data (`config.yml`)
+- `input`: `CONFIG_FILE` should contain a system local path.
 - `environment:`: `SLACK_API_TOKEN` should follow the `xoxp-*` pattern.
