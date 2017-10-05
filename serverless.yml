@@ -13,16 +13,6 @@ functions:
     events:
       - schedule:
           rate: cron(0 15 ? * MON-FRI *)
-          input:
-            sample:
-              pattern: 'test passed'
-              emojis:
-                - '+1'
-              notifications:
-                - user: '@jhon'
-                  info: 'Just reacted with :{{emoji}}: in <{{permalink}}|#{{channel.name}}>!'
-                  alert: 'Unable to react with :{{emoji}}:!'
-                - user: '@jane'
-                  info: 'Just reacted with :{{emoji}}: in <{{permalink}}|#{{channel.name}}>!'
+          input: ${file(${env:CONFIG_FILE})}
     environment:
-      SLACK_API_TOKEN: '<slack-api-token-here>'
+      SLACK_API_TOKEN: ${env:SLACK_API_TOKEN}
